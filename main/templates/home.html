@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+
+{% block title %}{{ page_title }}{% endblock %}
+
+
+{% block main-content %}
+{% include "partials/navbar.html" %}
+<div class="container-fluid h-100 d-flex flex-column">
+    <div class="row flex-grow-1">
+        <div class="col-12 d-flex flex-column justify-content-center align-items-center min-vh-80">
+            <div class="text-center mb-5">
+                <h1 class="display-4 fw-bold text-dark mb-3">Mechanical Toolbox</h1>
+                <p class="lead text-muted mb-4">Das digitale Nachschlagewerk für Maschinenelemente</p>
+            </div>
+
+            <div id="element-grid" class="w-100">
+                {% include "partials/element_tiles.html" %}
+            </div>
+
+            {% if not machinery_elements or not machinery_elements|length > 0 %}
+            <div class="text-center mt-5 py-5">
+                <i class="fas fa-tools fa-4x text-muted mb-3"></i>
+                <h3 class="text-muted">Keine Maschinenelemente verfügbar</h3>
+                <p class="text-muted">Bitte installieren Sie die gewünschten Module.</p>
+            </div>
+            {% endif %}
+        </div>
+    </div>
+</div>
+{% endblock %}
+<style>
+.min-vh-80 {
+    min-height: 80vh;
+}
+</style>

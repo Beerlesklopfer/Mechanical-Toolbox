@@ -1,0 +1,24 @@
+[submodule "bearings"]
+	path = bearings
+	url = .\\bearings\\
+[submodule "couplings"]
+	path = couplings
+	url = .\\couplings\\
+[submodule "fasteners"]
+	path = fasteners
+	url = .\\fasteners\\
+[submodule "fits"]
+	path = fits
+	url = .\\fits\\
+[submodule "gears"]
+	path = gears
+	url = .\\gears\\
+[submodule "shafts"]
+	path = shafts
+	url = .\\shafts\\
+[submodule "springs"]
+	path = springs
+	url = .\\springs\\
+[submodule "tolerances"]
+	path = tolerances
+	url = .\\tolerances\\

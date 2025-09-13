@@ -1,0 +1,14 @@
+*.pyc
+__pycache__/
+.DS_Store
+.vscode/
+.idea/
+.env
+.env.*
+.venv/
+.venv.* 
+pip-wheel-metadata/
+*.egg-info/
+static/
+db.sqlite3
+media/

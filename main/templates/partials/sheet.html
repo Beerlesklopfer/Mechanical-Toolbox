@@ -1,0 +1,164 @@
+{% block sheet-content %}
+<style>
+    .nav-tabs .nav-link {
+        border: 1px solid #dee2e6;
+        border-bottom: none;
+        margin-bottom: -1px;
+        background-color: #f8f9fa;
+        color: #495057;
+        transition: all 0.3s ease;
+    }
+
+    .nav-tabs .nav-link:hover {
+        background-color: #e9ecef;
+        border-color: #dee2e6;
+    }
+
+    .nav-tabs .nav-link.active {
+        background-color: white !important;
+        border-color: #dee2e6 #dee2e6 white #dee2e6;
+        color: #495057;
+        font-weight: 500;
+    }
+
+    .nav-tabs {
+        border-bottom: 1px solid #dee2e6;
+    }
+
+    .tab-content {
+        background: white;
+        min-height: 400px;
+    }
+</style>
+
+<div class="container-fluid py-4 mb-4 bg-light border-bottom">
+    <div class="row align-items-center">
+        <div class="col">
+            <h1 class="display-8 fw-bold text-danger mb-1">
+                {{ app_title }}
+                {% block app-title %}
+                {{ app_title }}
+                {% endblock %}
+            </h1>
+        </div>
+    </div>
+</div>
+
+<div class="container-fluid">
+    <!-- nav tabs -->
+    <ul class="nav nav-tabs nav-justified" style="border-bottom: none;">
+        <li class="nav-item">
+            <a class="nav-link active rounded-top" data-bs-toggle="tab" href="#calculation"
+               style="border-radius: 15px 15px 0 0 !important;">
+                <i class="fas fa-calculator me-2"></i>Berechnung
+            </a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link rounded-top" data-bs-toggle="tab" href="#standards"
+               style="border-radius: 15px 15px 0 0 !important;">
+                <i class="fas fa-book me-2"></i>Normen
+            </a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link rounded-top" data-bs-toggle="tab" href="#hints"
+               style="border-radius: 15px 15px 0 0 !important;">
+                <i class="fas fa-info-circle me-2"></i>Erklärende Hinweise
+            </a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link rounded-top" data-bs-toggle="tab" href="#examples"
+               style="border-radius: 15px 15px 0 0 !important;">
+                <i class="fas fa-graduation-cap me-2"></i>Beispiele
+            </a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link rounded-top" data-bs-toggle="tab" href="#exercises"
+               style="border-radius: 15px 15px 0 0 !important;">
+                <i class="fas fa-graduation-cap me-2"></i>Übungen
+            </a>
+        </li>
+        {% block custom-tabs%}
+        <!-- Hier können weitere Tabs hinzugefügt werden -->
+        {% endblock %}
+    </ul>
+
+    <!-- Pane Content -->
+    <div class="tab-content border p-3 rounded" style="border-top-left-radius: 0 !important;" id="tab-content">
+
+        <!-- Berechnung Tab -->
+        <div class="tab-pane fade show active mx-5" id="calculation" role="tabpanel">
+            <div class="container-box">
+                <!-- Hier deine Berechnungsinhalte einfügen -->
+                {% include "partials/calculation.html" %}
+            </div>
+        </div>
+
+        <!-- Normen Tab -->
+        <div class="tab-pane fade mx-5" id="standards" role="tabpanel">
+            <div class="container-box">
+                <!-- Hier Normen-Inhalte einfügen -->
+                {% include "partials/standards.html" %}
+            </div>
+        </div>
+
+        <!-- Hinweise Tab -->
+        <div class="tab-pane fade mx-5" id="hints" role="tabpanel" >
+            <div class="container-box">
+                <!-- Hier Erklärungstexte einfügen -->
+                {% include "partials/hints.html" %}
+            </div>
+        </div>
+
+        <!-- Examples Tab -->
+        <div class="tab-pane fade mx-5" id="examples" role="tabpanel">
+            <div class="container-box">
+                <!-- Hier Übungsaufgaben einfügen -->
+                {% include "partials/examples.html" %}
+            </div>
+        </div>
+
+        <!-- Übungen Tab -->
+        <div class="tab-pane fade mx-5" id="exercises" role="tabpanel">
+            <div class="container-box">
+                <!-- Hier Übungsaufgaben einfügen -->
+                {% include "partials/exercises.html" %}
+            </div>
+        </div>
+
+        {% block custom-panes %}
+        <!-- Hier können weitere Pane-Inhalte hinzugefügt werden -->
+        {% endblock %}
+        
+    </div> <!-- Pane Content -->
+</div> <!-- Container Fluid -->
+
+<script>
+    //     ######### TAB NAVIGATION#########
+    document.addEventListener('DOMContentLoaded', function () {
+        const tabLinks = document.querySelectorAll('.nav-tabs .nav-link');
+        const tabPanes = document.querySelectorAll('.tab-pane.fade');
+        tabLinks.forEach(function (link) {
+            link.addEventListener('click', function (e) {
+                e.preventDefault();
+
+                // Remove active class from all links and panes
+                tabLinks.forEach(l => l.classList.remove('active'));
+                tabPanes.forEach(p => {
+                    p.classList.remove('show', 'active');
+                });
+
+                // Add active class to clicked link
+                link.classList.add('active');
+
+                // Get the target pane by href
+                const targetIndex = Array.from(tabLinks).indexOf(link);
+                if (targetIndex !== -1 && tabPanes[targetIndex]) {
+                    tabPanes[targetIndex].classList.add('show', 'active');
+                }
+            });
+        });
+    });
+</script>
+{% endblock %}
+
+

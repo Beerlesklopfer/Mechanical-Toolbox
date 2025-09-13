@@ -1,0 +1,42 @@
+        /* Benutzerdefinierte Textfarben für Bootstrap */
+        .text-custom-primary {
+            color: #007BFF !important; /* Ersetzen mit dem extrahierten Primärfarbewert */
+        }
+
+        .text-custom-secondary {
+            color: #6C757D !important; /* Ersetzen mit dem extrahierten Sekundärfarbewert */
+        }
+
+        .text-custom-success {
+            color: #28A745 !important; /* Ersetzen mit dem extrahierten Erfolgsfarbewert */
+        }
+
+        .text-custom-danger {
+            color: #DC3545 !important; /* Ersetzen mit dem extrahierten Gefahrfarbewert */
+        }
+
+        .text-custom-warning {
+            color: #FFC107 !important; /* Ersetzen mit dem extrahierten Warnfarbewert */
+        }
+
+        .text-custom-info {
+            color: #17A2B8 !important; /* Ersetzen mit dem extrahierten Infofarbewert */
+        }
+
+        .text-custom-light {
+            color: #F8F9FA !important; /* Ersetzen mit dem extrahierten Hellfarbewert */
+        }
+
+        .text-custom-dark {
+            color: #343A40 !important; /* Ersetzen mit dem extrahierten Dunkelfarbewert */
+        }
+
+        /* Zusätzliche benutzerdefinierte Farben, falls benötigt */
+        .text-custom-accent {
+            color: #FFC107 !important; /* Beispiel für eine Akzentfarbe */
+        }
+        /* Override Bootstrap label color */
+        .label,
+        .badge {
+            color: #007BFF !important; /* Use your custom primary color or adjust as needed */
+        }
