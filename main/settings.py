@@ -24,7 +24,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-8@3tciyl*i-!emfy$5b#ja&6-31*bu7vof=x&c2#qz-5)-78c+'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 ALLOWED_HOSTS = [
     'localhost',
@@ -71,16 +71,25 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'rest_framework',
     "django_htmx",
+    'django.contrib.staticfiles',
     # Third-party apps
     #'django_htmx',  # HTMX integration
 
     *CUSTOM_APPS,
     
     # Optional productivity apps
-    'django_extensions',   # Useful development tools
+    # 'django_extensions',   # Useful development tools
     # 'debug_toolbar',       # Debugging toolbar
     # 'django_celery_beat',  # Periodic task scheduling
     ]
+
+STATIC_URL = "/static/"
+STATIC_ROOT = BASE_DIR / "static"
+MEDIA_URL = '/media/'
+MEDIA_ROOT = BASE_DIR / "media"
+MEDIAFILES_DIRS = [
+    BASE_DIR / "main/mediafiles",
+]
 
 # only serve static files via django when in DEBUG mode
 # otherwise let the web server serve them
@@ -88,18 +97,6 @@ INSTALLED_APPS = [
 if DEBUG:
     INSTALLED_APPS += [
         'debug_toolbar',
-        'django.contrib.staticfiles',
-    ]
-    STATIC_URL = "static/"
-    STATIC_ROOT = BASE_DIR / "static"
-    STATICFILES_DIRS = [
-        BASE_DIR / "main/staticfiles",
-        BASE_DIR / "fits/staticfiles",
-    ]
-    MEDIA_URL = '/media/'
-    MEDIA_ROOT = BASE_DIR / "media"
-    MEDIAFILES_DIRS = [
-        BASE_DIR / "main/mediafiles",
     ]
 
 MIDDLEWARE = [
