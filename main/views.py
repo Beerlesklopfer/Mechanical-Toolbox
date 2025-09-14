@@ -6,10 +6,15 @@ from django.contrib.auth.mixins import LoginRequiredMixin
 from django.views.generic import TemplateView
 from main import settings as settings
 from django.urls import reverse
+from .mixins import AppTemplateMixin
 
-class HomeView(View):
+class HomeView(AppTemplateMixin, TemplateView):
+    template_name = 'home.html'
+    footer_partial = 'partials/footer.html'  # Define the attribute or set it appropriately
+
+    
     def get(self, request):
-
+        print("GET request received", self.footer_partial)
         # 'fits',                # Fits components
         # 'fasteners',           # Fasteners components
         # 'tolerances',          # Tolerances components
@@ -104,7 +109,7 @@ class HomeView(View):
             return render(request, 'partials/element_tiles.html', context)
         else:
             context['hx_trigger'] = 'false'
-            return render(request, 'home.html', context)
+        return render(request, 'home.html', context)
 
 class ProfileView(LoginRequiredMixin, TemplateView):
     template_name = 'user_profile.html'

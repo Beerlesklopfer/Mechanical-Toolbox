@@ -161,7 +161,7 @@ class Standards(models.Model):
         from django.urls import reverse
         return reverse('standard_detail', kwargs={'pk': self.pk})
     
-class Material(models.Model):
+class Materials(models.Model):
     """Material properties for fasteners"""
     name = models.CharField(max_length=50, unique=True)
     material_code = models.CharField(max_length=20, blank=True)

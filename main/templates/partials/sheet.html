@@ -1,11 +1,18 @@
 {% block sheet-content %}
 <style>
-    .nav-tabs .nav-link {
-        border: 1px solid #dee2e6;
-        border-bottom: none;
-        margin-bottom: -1px;
-        background-color: #f8f9fa;
-        color: #495057;
+.title-bar {
+    font-size: 2.5rem;
+    font-weight: 700;
+    border-radius: 18px;
+    color: var(--owl-magenta);
+}
+
+.nav-tabs .nav-link {
+    border: 1px solid var(--owl-magenta);
+    border-bottom: none;
+    margin-bottom: -1px;
+    background-color: var(--owl-light-gray);
+        color: var(--owl-gray);
         transition: all 0.3s ease;
     }
 
@@ -29,22 +36,32 @@
         background: white;
         min-height: 400px;
     }
+    .tab-content {
+        background: white;
+        min-height: 160px;
+        /* Optionally, use height: 400px; for fixed height */
+    }
+    .tab-pane {
+        min-height: 800px;
+        /* Optionally, use height: 100%; if .tab-content has fixed height */
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+    }    
 </style>
 
-<div class="container-fluid py-4 mb-4 bg-light border-bottom">
-    <div class="row align-items-center">
-        <div class="col">
-            <h1 class="display-8 fw-bold text-danger mb-1">
-                {{ app_title }}
-                {% block app-title %}
-                {{ app_title }}
-                {% endblock %}
-            </h1>
-        </div>
-    </div>
-</div>
-
 <div class="container-fluid">
+    <!-- Headerbar -->
+    <div class="container-fluid py-4 mb-4 bg-light border-bottom title-bar">
+        <div class="row align-items-center mb-3">
+            <div class="col text-center">
+                <h1 class="display-8 fw-bold mb-1">
+                    {% block app-title %} {{ app_title }} {% endblock %} 
+                </h1>
+            </div>
+        </div>
+    </div> <!-- Headerbar -->
+
     <!-- nav tabs -->
     <ul class="nav nav-tabs nav-justified" style="border-bottom: none;">
         <li class="nav-item">
@@ -89,7 +106,7 @@
         <div class="tab-pane fade show active mx-5" id="calculation" role="tabpanel">
             <div class="container-box">
                 <!-- Hier deine Berechnungsinhalte einfügen -->
-                {% include "partials/calculation.html" %}
+                {% include calculation_partial %}
             </div>
         </div>
 
@@ -97,7 +114,7 @@
         <div class="tab-pane fade mx-5" id="standards" role="tabpanel">
             <div class="container-box">
                 <!-- Hier Normen-Inhalte einfügen -->
-                {% include "partials/standards.html" %}
+                {% include standards_partial %}
             </div>
         </div>
 
@@ -105,7 +122,7 @@
         <div class="tab-pane fade mx-5" id="hints" role="tabpanel" >
             <div class="container-box">
                 <!-- Hier Erklärungstexte einfügen -->
-                {% include "partials/hints.html" %}
+                {% include hints_partial %}
             </div>
         </div>
 
@@ -113,15 +130,15 @@
         <div class="tab-pane fade mx-5" id="examples" role="tabpanel">
             <div class="container-box">
                 <!-- Hier Übungsaufgaben einfügen -->
-                {% include "partials/examples.html" %}
-            </div>
+                    {% include examples_partial %}
+                </div>
         </div>
 
         <!-- Übungen Tab -->
         <div class="tab-pane fade mx-5" id="exercises" role="tabpanel">
             <div class="container-box">
                 <!-- Hier Übungsaufgaben einfügen -->
-                {% include "partials/exercises.html" %}
+                {% include exercises_partial %}
             </div>
         </div>
 

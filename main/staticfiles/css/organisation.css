@@ -1,7 +1,8 @@
         :root {
-            --owl-magenta: #e5165e;
-            --owl-light-magenta: #f6407f;
-            --owl-gray: #f5f5f5;
+            --owl-magenta: #e50043;
+            --owl-light-magenta: #da7291;
+            --owl-gray:  #4d4d4d;
+            --owl-light-gray: #a6a6a6;
         }
         
         body {

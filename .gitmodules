@@ -1,24 +1,24 @@
 [submodule "bearings"]
 	path = bearings
-	url = .\\bearings\\
+	url = git@github.com:Beerlesklopfer/mtk_bearings.git
 [submodule "couplings"]
 	path = couplings
-	url = .\\couplings\\
+	url = git@github.com:Beerlesklopfer/mtk_couplings.git
 [submodule "fasteners"]
 	path = fasteners
-	url = .\\fasteners\\
+	url = git@github.com:Beerlesklopfer/mtk_fasteners.git
 [submodule "fits"]
 	path = fits
-	url = .\\fits\\
+	url = git@github.com:Beerlesklopfer/mtk_fits.git
 [submodule "gears"]
 	path = gears
-	url = .\\gears\\
+	url = git@github.com:Beerlesklopfer/mtk_gears.git
 [submodule "shafts"]
 	path = shafts
-	url = .\\shafts\\
+	url = git@github.com:Beerlesklopfer/mtk_shafts.git
 [submodule "springs"]
 	path = springs
-	url = .\\springs\\
+	url = git@github.com:Beerlesklopfer/mtk_springs.git
 [submodule "tolerances"]
 	path = tolerances
-	url = .\\tolerances\\
+	url = git@github.com:Beerlesklopfer/mtk_tolerances.git	

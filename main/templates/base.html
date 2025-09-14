@@ -37,23 +37,86 @@
             --bs-light: #F8F9FA; /* Hellfarbe anpassen */
             --bs-dark: #343A40; /* Dunkelfarbe anpassen */
         }
-    </style>
+        /* Custom admin styles */
+        #header {
+            background-color: #2c3e50;
+            color: white;
+        }
+        
+        #branding h1 a {
+            color: white;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .nav-global-container {
+            padding: 10px 20px;
+            background: #34495e;
+        }
+        
+        .quick-links {
+            display: flex;
+            gap: 8px;
+        }
+        
+        #footer {
+            padding: 15px 30px;
+            background: #f8f9fa;
+            border-top: 1px solid #e7e7e7;
+        }
+        
+        .footer-content {
+            display: flex;
+            justify-content: space-between;
+        }
+        
+        /* Responsive adjustments */
+        @media (max-width: 768px) {
+            #branding h1 a span {
+                display: none;
+            }
+            
+            .quick-links {
+                flex-wrap: wrap;
+            }
+        }
+</style>
 </head>
+
 <body hx-headers='{"X-CSRFToken": "{{ csrf_token }}"}'>
 
-   
-    <div class="container mt-4" id="main-content">
-    {% block main-content %}
-       {% block app-title %}{% endblock %}
-    {% endblock %}
-    <div class="mt-4">
-        &nbsp;
-    </div>
-        {% block app-links %}
-            {% include "partials/footer.html" %}
+<div class="container mt-4" id="main-content">
+        {% block nav-bar %}  {% endblock %}
+    </nav>
+
+    <div class="content-pane" style="margin-top: 70px; margin-bottom: 60px; overflow-y: auto; height: calc(100vh - 130px);">
+        {% block main-content %}
+            {% block app-title %} Hier steht der App Titel {{ app_title }} {% endblock %}
+            {% block sheet-content %}{% include ssheet_partial %}{% endblock %}
+            {% block app-links %} {% include "partials/footer.html" %} {% endblock %}
         {% endblock %}
     </div>
-    
+
+</div>
+
+    <!-- JavaScript to show/hide footer on scroll -->   
+<script>
+    let lastScrollTop = 0;
+    const footer = document.getElementById('main-footer');
+    document.querySelector('.content-pane').addEventListener('scroll', function() {
+        let st = this.scrollTop;
+        if (st < lastScrollTop) {
+            // Scrolling up
+            footer.style.transform = 'translateY(0)';
+        } else {
+            // Scrolling down
+            footer.style.transform = 'translateY(100%)';
+        }
+        lastScrollTop = st <= 0 ? 0 : st;
+    });
+</script>
+
     <!-- Bootstrap 5 JS Bundle with Popper -->
     <script src="{% static 'js/bootstrap.bundle.min.js' %}"></script>
 

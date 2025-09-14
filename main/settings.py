@@ -45,6 +45,23 @@ LOGIN_REDIRECT_URL = 'home'  # Redirects to home page after login
 LOGOUT_REDIRECT_URL = 'home'  # Redirects to home page after logout
 LOGIN_URL = 'login'  # URL where the login page is located
 
+CUSTOM_APPS = [
+        # Local apps - Mechanical Toolbox components
+    'main',                # Main project app
+    'fits',                # Fits components
+    'fasteners',           # Fasteners components
+    'tolerances',          # Tolerances components
+    'bearings',            # Bearings components
+    'gears',               # Gears components
+    'springs',             # Springs components
+    'shafts',              # Shafts components
+    'couplings',           # Couplings components
+    # 'belts',               # Belts components
+    # 'pulleys',             # Pulleys components
+    # 'chains',              # Chains components
+    # 'sprockets',           # Sprockets components
+]
+
 # Application definition
 INSTALLED_APPS = [
     'django.contrib.admin',
@@ -56,17 +73,8 @@ INSTALLED_APPS = [
     "django_htmx",
     # Third-party apps
     #'django_htmx',  # HTMX integration
-    
-    # Local apps - Mechanical Toolbox components
-    'main',  # Main project app
-    'fits',                # Fits components
-    'fasteners',           # Fasteners components
-    'tolerances',          # Tolerances components
-    'bearings',            # Bearings components
-    'gears',               # Gears components
-    'springs',             # Springs components
-    'shafts',              # Shafts components
-    'couplings',           # Couplings components
+
+    *CUSTOM_APPS,
     
     # Optional productivity apps
     'django_extensions',   # Useful development tools
@@ -114,28 +122,22 @@ if DEBUG:
 
 TEMPLATES = [
     {
-        'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [
-            BASE_DIR / 'templates',
-            # Main project templates
-            BASE_DIR / 'main' / 'templates',
-            # App-specific template directories
-            # BASE_DIR / 'templates' / 'fasteners',
-            # BASE_DIR / 'templates' / 'bearings',
-            # BASE_DIR / 'templates' / 'gears',
-            # BASE_DIR / 'templates' / 'springs',
-        ],
+        'BACKEND': 'django.template.backends.django.DjangoTemplates',            
+        'DIRS': [BASE_DIR / 'main/templates'],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
+                'django.template.context_processors.debug',
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+                'django.template.context_processors.i18n',
             ],
         },
     },
 ]
 
+        
 WSGI_APPLICATION = 'main.wsgi.application'
 
 

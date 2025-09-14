@@ -1,57 +1,13 @@
 <div id="footer">
-    <div class="footer-content">
-        <div class="version-info">
-            Mechanical Toolbox v1.0 | Django {{ django_version }}
+    <footer id="main-footer" class="footer bg-light text-center fixed-bottom" style="transition: transform 0.3s; transform: translateY(100%);">
+        <div class="footer-content">
+            <div class="version-info">
+                Mechanical Toolbox v1.0 | Django {{ django_version }}
+            </div>
+            <div class="support-links">
+                <a href="/admin/docs/" class="text-muted">Documentation</a> |
+                <a href="mailto:support@mechanical-toolbox.com" class="text-muted">Support</a>
+            </div>
         </div>
-        <div class="support-links">
-            <a href="/admin/docs/" class="text-muted">Documentation</a> |
-            <a href="mailto:support@mechanical-toolbox.com" class="text-muted">Support</a>
-        </div>
-    </div>
+    </footer>
 </div>
-<style>
-    /* Custom admin styles */
-    #header {
-        background-color: #2c3e50;
-        color: white;
-    }
-    
-    #branding h1 a {
-        color: white;
-        display: flex;
-        align-items: center;
-        gap: 10px;
-    }
-    
-    .nav-global-container {
-        padding: 10px 20px;
-        background: #34495e;
-    }
-    
-    .quick-links {
-        display: flex;
-        gap: 8px;
-    }
-    
-    #footer {
-        padding: 15px 30px;
-        background: #f8f9fa;
-        border-top: 1px solid #e7e7e7;
-    }
-    
-    .footer-content {
-        display: flex;
-        justify-content: space-between;
-    }
-    
-    /* Responsive adjustments */
-    @media (max-width: 768px) {
-        #branding h1 a span {
-            display: none;
-        }
-        
-        .quick-links {
-            flex-wrap: wrap;
-        }
-    }
-</style>
